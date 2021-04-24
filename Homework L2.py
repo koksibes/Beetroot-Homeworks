@@ -26,7 +26,7 @@ Manipulate strings.
 Save your first and last name as separate variables,
 then use string concatenation to add them together with a white space in between and print a greeting.
 """
-#We get name from the first task
+# We get name from the first task
 lastname = input("What's your lastname? ")
 fullname = name.capitalize() + " " + lastname.capitalize()
 print(f"Hello, {fullname}")
@@ -56,3 +56,22 @@ print(f"Multiplication: {a * b}")
 print(f"Exponent (Power): {a ** b}")
 print(f"Modulus: {a % b}")
 print(f"Floor division: {a // b}")
+"""
+(под звездочкой)
+
+вариант задания осваивать форматирование строк. Заполните прочерк чтобы получить вот такую строку на выходе 
+
+"000012 Василий 110110 32.10"
+
+print("____________________".format(12, "Василий", 54, 32.1))
+
+(https://www.w3resource.com/python-exercises/string/python-data-type-string-exercise-33.php)
+
+Попробуйте взять какое то одно слово в переменную и "собрать" из него другие слова.
+Например взяли слово "Корован"  
+
+s1 = "Корован"
+
+подумайте как вы из него можете вывести слово "ворона" (есть несколько вариантов)
+"""
+print("{:06} {} {:b} {:.2f}  ".format(12, "Василий", 54, 32.10))
