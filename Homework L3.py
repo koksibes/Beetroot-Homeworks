@@ -1,3 +1,5 @@
+import random
+
 """
 Task 1
 
@@ -23,13 +25,13 @@ Tips:
 Use built-in function len() on an input string
 Use positive indexing to get the first characters of a string and negative indexing to get the last characters
 """
-"""
+
 sampstr = input("Input sample string: ")
 if len(sampstr) < 2:
     print("Expected Result: Empty String")
 else:
-    print(f"Expected Result: {sampstr[0:2]+sampstr[-2:]}")
-"""
+    print(f"Expected Result: {sampstr[0:2] + sampstr[-2:]}")
+
 """
 Task 2
 
@@ -39,7 +41,9 @@ Make a program that checks if a string is in the right format for a phone number
 The program should check that the string contains only numerical characters and is only 10 characters long.
 Print a suitable message depending on the outcome of the string evaluation.
 """
-"""
+
+
+# Не модний перевіряльщик номера))
 def numberchek():
     while True:
         phonumber = input("Your phone number: ")
@@ -53,8 +57,10 @@ def numberchek():
                 print("To short")
             else:
                 print("The number can only be digits")
+
+
 numberchek()
-"""
+
 """
 Task 3
 
@@ -64,7 +70,7 @@ Write a program that has a variable with your name stored (in lowercase) and the
 The program should check if your input is equal to the stored name even if the given name has another case, e.g., 
 if your input is “Anton” and the stored name is “anton”, it should return True.
 """
-"""
+
 myname = "Kostia"
 
 while True:
@@ -74,12 +80,13 @@ while True:
         break
     else:
         print(f"Sorry my name is no {mynameinpt.capitalize()}, try again.")
-        """
+
 """
 Завдання з зірочкрою
 """
 
 
+# модний перевіряльщик номера
 def coolnumberchek():
     ukropercode = ["067", "096", "097", "098", "050", "066", "095", "099", "063", "073", "093"]
     while True:
@@ -99,6 +106,7 @@ def coolnumberchek():
     return phonumber
 
 
+# Функція перевірки імені, яка провіряє чи не пусте поле.
 def clientname():
     while True:
         clientnamedummy = input("Input your name in English: ")
@@ -115,14 +123,15 @@ def clientname():
     return clientnamedummy.capitalize() + " " + clientlnamedummy.capitalize()
 
 
+# Функція можна було ще дописати самовивіз, але я не вивіз вже тай карантин нема чого лазити))
 def dostavka():
-    ukrdostavki = ["nova poshta", "meest express", "justin", "ukrposhta", "delivery"]
+    ukrdostavki = ["Nova poshta", "Meest express", "Justin", "Ukrposhta", "Delivery"]
     while True:
         dummydostavka = input("Choose delivery company: ")
-        if dummydostavka.lower() in ukrdostavki:
+        if dummydostavka.lower() in ', '.join(ukrdostavki).lower():
             break
         else:
-            print(f"Choose one of this delivery services")
+            print(f"Choose one of this ({', '.join(ukrdostavki)}) delivery services")
     while True:
         dummycity = input("Input your city: ")
         if dummycity:
@@ -135,7 +144,7 @@ def dostavka():
             break
         else:
             print("Address can not be empty")
-    return dummydostavka.capitalize() + " " + dummycity.capitalize() + " " + dummyaddress.capitalize()
+    return dummydostavka.capitalize() + ", " + dummycity.capitalize() + ", " + dummyaddress.capitalize()
 
 
 # Функція яка і питає і провіряє для зручності перевірки
@@ -185,5 +194,10 @@ def ordercheck():
         return clientfullname + ", " + clientnumber + ", " + clientdelivery
 
 
-a = ordercheck()
-print(a.split(","))
+fclientinfo = ordercheck().split(",")
+print(f"{fclientinfo[0]} your order  is №{random.randint(10000, 99999)}, "
+      f"we will send a message to the number: {fclientinfo[1]}, with your track number "
+      f"and the company {fclientinfo[2]} will call you an hour before it can be"
+      f" at the {fclientinfo[3]}, {fclientinfo[4]}."
+      f"Have a nice day and good luck!!!"
+      )
