@@ -90,36 +90,36 @@ while True:
 def coolnumberchek():
     ukropercode = ["067", "096", "097", "098", "050", "066", "095", "099", "063", "073", "093"]
     while True:
-        phonumber = input("Your cellphone number: ")
+        phonumber = input("Pleas, type in your cellphone number: ")
         if phonumber.isdigit():
             if phonumber[:3] in ukropercode:
                 if len(phonumber) == 10:
                     break
                 elif len(phonumber) > 10:
-                    print("To long")
+                    print("Your cellphone number to long")
                 elif len(phonumber) < 10:
-                    print("To short")
+                    print("Your cellphone number to short")
             else:
-                print(f"The cellphone number need to start operator with code {', '.join(ukropercode)} ")
+                print(f"The cellphone number is to begin with operator code {', '.join(ukropercode)} ")
         else:
-            print("The number can only be digits")
+            print("The cellphone number should be inserted with digits")
     return phonumber
 
 
 # Функція перевірки імені, яка провіряє чи не пусте поле.
 def clientname():
     while True:
-        clientnamedummy = input("Input your name in English: ")
+        clientnamedummy = input("Insert your first name: ")
         if clientnamedummy:
             break
         else:
-            print("Name can not be empty")
+            print("The first name field can't be empty")
     while True:
-        clientlnamedummy = input("Input your last name in English: ")
+        clientlnamedummy = input("Insert your last name: ")
         if clientlnamedummy:
             break
         else:
-            print("Last name can not be empty")
+            print("The last name field can't be empty")
     return clientnamedummy.capitalize() + " " + clientlnamedummy.capitalize()
 
 
@@ -127,24 +127,31 @@ def clientname():
 def dostavka():
     ukrdostavki = ["Nova poshta", "Meest express", "Justin", "Ukrposhta", "Delivery"]
     while True:
-        dummydostavka = input("Choose delivery company: ")
+        dummydostavka = input("Choose a delivery company: ")
         if dummydostavka.lower() in ', '.join(ukrdostavki).lower():
             break
         else:
-            print(f"Choose one of this ({', '.join(ukrdostavki)}) delivery services")
+            print(f"Please, choose one of these ({', '.join(ukrdostavki)}) delivery services")
     while True:
-        dummycity = input("Input your city: ")
+        dummycity = input("Insert your city: ")
         if dummycity:
             break
         else:
-            print("City can not be empty")
+            print("The field 'City' can't be empty")
     while True:
-        dummyaddress = input("Input your address: ")
-        if dummyaddress:
+        dummystreet = input("Insert your street name: ")
+        if dummystreet:
             break
         else:
-            print("Address can not be empty")
-    return dummydostavka.capitalize() + ", " + dummycity.capitalize() + ", " + dummyaddress.capitalize()
+            print("The field 'Street' can't be empty")
+    while True:
+        dummyhnumber = input("Insert your house number: ")
+        if dummyhnumber:
+            break
+        else:
+            print("The field 'House number' can't be empty")
+
+    return dummydostavka.capitalize() + ", " + dummycity.capitalize() + ", " + dummystreet.capitalize() + ", " + dummyhnumber
 
 
 # Функція яка і питає і провіряє для зручності перевірки
@@ -156,48 +163,49 @@ def ordercheck():
     clientdelivery = dostavka()
     # Check name
     while True:
-        chekname = input(f"You name is {clientfullname}? ").lower()
+        chekname = input(f"Please, confirm if your full name is {clientfullname}? ").lower()
         if chekname in negativeansv:
-            chekorderstatus = input("You did order in shop 'Bananoviy Kakos? ").lower()
+            chekorderstatus = input("Did you make an order in a shop 'Bananoviy Kakos'? ").lower()
             if chekorderstatus in positiveansv:
                 clientfullname = clientname()
             elif chekorderstatus in negativeansv:
                 print("Sorry for the inconvenience")
                 break
             else:
-                print("Answer Yes or No")
+                print("Pleas, answer Yes or No")
         elif chekname in positiveansv:
-            print(f"Ok.{clientfullname}")
+            print(f"Your full name {clientfullname} is confirmed")
         else:
-            print("Answer Yes or No")
+            print("Pleas, answer Yes or No")
 
         # Check number
         while True:
-            cheknumber = input(f"You number is {clientnumber}? ").lower()
+            cheknumber = input(f"Please, confirm if your cellphone number is {clientnumber}? ").lower()
             if cheknumber in positiveansv:
-                print(f"Ok.{clientnumber}")
+                print(f"Your cellphone number {clientnumber} is confirmed")
                 break
             elif cheknumber in negativeansv:
                 clientnumber = coolnumberchek()
             else:
-                print("Answer Yes or No")
+                print("Pleas, answer Yes or No")
         # check delivery
         while True:
-            chekdelivery = input(f"You delivery services and addresses is {clientdelivery}? ").lower()
+            chekdelivery = input(f"Pleas, confirm if your delivery service and addresses is ({clientdelivery})? ").lower()
             if chekdelivery in positiveansv:
-                print(f"Ok.{clientdelivery}")
+                print(f"Your delivery service and address information ({clientdelivery}) is confirmed")
                 break
             elif chekdelivery in negativeansv:
                 clientdelivery = dostavka()
             else:
-                print("Answer Yes or No")
+                print("Pleas, answer Yes or No")
         return clientfullname + ", " + clientnumber + ", " + clientdelivery
 
 
 fclientinfo = ordercheck().split(",")
-print(f"{fclientinfo[0]} your order  is №{random.randint(10000, 99999)}, "
+
+print(f"\n\n{fclientinfo[0]}, your order number is №{random.randint(10000, 99999)}, "
       f"we will send a message to the number: {fclientinfo[1]}, with your track number "
-      f"and the company {fclientinfo[2]} will call you an hour before it can be"
-      f" at the {fclientinfo[3]}, {fclientinfo[4]}."
-      f"Have a nice day and good luck!!!"
+      f"\nand the company '{fclientinfo[2]}' will call you an hour before it can be delivered"
+      f" at the following address: {fclientinfo[3]}, {fclientinfo[4]},{fclientinfo[5]} ."
+      f"\nHave a nice day and good luck!!!"
       )
