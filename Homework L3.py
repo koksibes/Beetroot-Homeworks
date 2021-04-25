@@ -38,18 +38,18 @@ Make a program that checks if a string is in the right format for a phone number
 The program should check that the string contains only numerical characters and is only 10 characters long.
 Print a suitable message depending on the outcome of the string evaluation.
 """
-
-phonumber = input("Your phone number: ")
-if phonumber.isdigit():
-    if len(phonumber) == 10:
-        print(f"Correct number {phonumber}")
-    elif len(phonumber) > 10:
-        print("To long")
-    elif len(phonumber) < 10:
-        print("To short")
-else:
-    print("The number can only be digits")
-
+while True:
+    phonumber = input("Your phone number: ")
+    if phonumber.isdigit():
+        if len(phonumber) == 10:
+            print(f"Correct number {phonumber}")
+            break
+        elif len(phonumber) > 10:
+            print("To long")
+        elif len(phonumber) < 10:
+            print("To short")
+        else:
+            print("The number can only be digits")
 """
 Task 3
 
