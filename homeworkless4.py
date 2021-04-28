@@ -76,7 +76,7 @@ while True:
 """
 linechess = 0
 while linechess < 8:
-    if linechess == 0 or linechess % 2 == 0:
+    if  linechess % 2 == 0:
         print(" W  B " * 4)
         linechess += 1
     else:
