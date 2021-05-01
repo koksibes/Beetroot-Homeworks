@@ -32,7 +32,16 @@ integers between the 2 initial lists without any duplicates.
 
 Constraints: use only while loop and random module to generate numbers
 """
+numbers1=[]
+while len(numbers1)<=10:
+    numbers1.append(random.randint(0, 10))
+numbers2=[]
+while len(numbers2)<=10:
+    numbers2.append(random.randint(0, 10))
 
+numberssum=list(set(numbers1)- set(numbers2))
+
+print(f"Список {numberssum}")
 """
 Task 3
 
