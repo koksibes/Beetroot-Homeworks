@@ -96,3 +96,6 @@ for month_idx in range(1, 13):
 month_dictreversed = {month_dict[i]: i for i in month_dict}
 print(month_dict)
 print(month_dictreversed)
+#Рабоча страта
+month_dict={month_dict[i]: i for i in month_dict}
+print(month_dict)
