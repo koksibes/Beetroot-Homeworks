@@ -9,7 +9,7 @@ def contact_searcher(search_data):
             pb = json.load(fp)
             for i in pb:
                 for j in pb[i]:
-                    if search_data in pb[i][j].lower():
+                    if search_data.lower() in pb[i][j].lower():
                         search_result.update({i: pb[i]})
             return search_result
         except JSONDecodeError:
