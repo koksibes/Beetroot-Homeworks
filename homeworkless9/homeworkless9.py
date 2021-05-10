@@ -1,4 +1,3 @@
-import json
 """
 Task 1
 
@@ -13,10 +12,9 @@ Note: file write methods do not add newline characters to your strings; add an e
 if you want to fully terminate the line in the file.
 """
 
-with open("../myfile.txt", "w") as fp:
+with open("myfile.txt", "w") as fp:
     fp.write("Hello file world!\n")
 
-with open("../myfile.txt", "r") as fp:
+with open("myfile.txt", "r") as fp:
     a = fp.read()
     print(a)
-
