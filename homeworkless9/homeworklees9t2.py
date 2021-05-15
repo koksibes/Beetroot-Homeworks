@@ -69,19 +69,16 @@ def add_contact():
     return contact
 
 
-def store_contact():
-    contact = add_contact()
+def store_contact(contact):
     with open("homeworkless9\phonebook.json") as fp_to_read:
         try:
             contact_storage = json.load(fp_to_read)
             with open("homeworkless9\phonebook.json", "w") as fp_to_write:
-                contact_to_apend = {str(len(contact_storage) + 1): contact}
-                contact_storage.update(contact_to_apend)
+                contact_storage.append(contact)
                 json.dump(contact_storage, fp_to_write, sort_keys=True, indent=4)
         except JSONDecodeError:
-            contact_to_apend = {1: contact}
             with open("homeworkless9\phonebook.json", "w") as fp_to_write:
-                json.dump(contact_to_apend, fp_to_write, sort_keys=True, indent=4)
+                json.dump([contact], fp_to_write, sort_keys=True, indent=4)
 
 
-store_contact()
+store_contact(add_contact())
